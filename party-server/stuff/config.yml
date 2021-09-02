@@ -1,0 +1,67 @@
+server:
+  rootPath: /v1/
+  adminConnectors: []
+  gzip:
+    enabled: true
+    minimumEntitySize: 256B
+    bufferSize: 8KB
+  applicationConnectors:
+    - type: http
+      port: 21360
+      headerCacheSize: 512 bytes
+      outputBufferSize: 32KiB
+      maxRequestHeaderSize: 8KiB
+      maxResponseHeaderSize: 8KiB
+      inputBufferSize: 8KiB
+      idleTimeout: 30 seconds
+      minBufferPoolSize: 64 bytes
+      bufferPoolIncrement: 1KiB
+      maxBufferPoolSize: 64KiB
+      acceptorThreads: 1
+      selectorThreads: 2
+      acceptQueueSize: 1024
+      reuseAddress: true
+      useServerHeader: false
+      useDateHeader: true
+      useForwardedHeaders: true
+  requestLog:
+    appenders:
+      - type: console
+        threshold: INFO
+        timeZone: system
+      - type: file
+        threshold: INFO
+        currentLogFilename: data/log/output_request.log
+        archivedLogFilenamePattern: data/log/output-request-%d{yyyy-MM-dd}-%i.log.gz
+        archivedFileCount: 7
+        maxFileSize: 10MB
+        timeZone: system
+
+# Logging settings.
+logging:
+    level: INFO
+    appenders:
+      - type: console
+        threshold: INFO
+        timeZone: system
+      - type: file
+        threshold: INFO
+        currentLogFilename: data/log/output.log
+        archivedLogFilenamePattern: data/log/output-%d{yyyy-MM-dd}-%i.log.gz
+        archivedFileCount: 7
+        maxFileSize: 10MB
+        timeZone: system
+
+#Server config
+spotifyClientId: REPLACE
+spotifyClientSecret: REPLACE
+serverBaseUrl: https://replace.com/party
+#SHA 256 hashed secret
+hashedApiKey: REPLACE
+
+appendCorsHeaders: true
+corsHeaders:
+  Access-Control-Allow-Origin: "https://replace.com"
+  Access-Control-Allow-Credentials: "true"
+  Access-Control-Allow-Headers: "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Access-Control-Allow-Origin, Access-Control-Allow-Methods, Authorization"
+  Access-Control-Allow-Methods: "GET, POST, PUT, DELETE, OPTIONS, HEAD"
