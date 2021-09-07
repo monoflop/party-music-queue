@@ -22,10 +22,6 @@ import java.time.LocalDateTime;
  *
  * The spotify api implementation has no automatic token refresh mechanism, so
  * we refresh the token manually.
- *
- * One of the following methods are called before an api request:
- * - refresh
- * - forceRefresh
  */
 public class SpotifyApiAuthManager {
     private final SpotifyApi spotifyApi;

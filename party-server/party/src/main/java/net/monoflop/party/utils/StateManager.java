@@ -32,7 +32,6 @@ public class StateManager implements Managed {
     public void load() throws IOException {
         if(!stateFile.exists()) {
             saveDefault();
-            //throw new FileNotFoundException();
         }
         String fileContent = new String(Files.readAllBytes(Paths.get(stateFile.toURI())), StandardCharsets.UTF_8);
         content = gson.fromJson(fileContent, JsonObject.class);

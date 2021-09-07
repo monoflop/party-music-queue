@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Optional;
 
-//TODO allow dynamic authentication with one account
+//TODO Add authentication interface or something
 @Path("/auth/spotify")
 public class AuthenticationResource {
     private static final Logger log = LoggerFactory.getLogger(AuthenticationResource.class);
