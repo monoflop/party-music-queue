@@ -38,8 +38,9 @@ class PlaybackUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height:
-          UiUtils.isMobile(context) ? mobilePlaybackSize : desktopPlaybackSize,
+      height: UiUtils.isMobile(context)
+          ? mobilePlaybackSize //MediaQuery.of(context).size.height * 0.3
+          : desktopPlaybackSize,
       color: Colors.transparent,
       child: new Container(
         decoration: new BoxDecoration(

@@ -35,33 +35,35 @@ class MainApp extends StatelessWidget {
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    AppBar appBar = AppBar(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.audiotrack,
+            color: Colors.white,
+            size: 30.0,
+          ),
+          Container(
+              padding: const EdgeInsets.all(8.0),
+              child:
+                  Text("MUSIKWÜNSCHE", style: GoogleFonts.openSansCondensed()))
+        ],
+      ),
+      backgroundColor: Colors.black,
+      elevation: 0.0,
+      centerTitle: true,
+      automaticallyImplyLeading: false,
+      leading: IconButton(
+        icon: Icon(Icons.refresh),
+        onPressed: () {
+          BlocProvider.of<PlaybackCubit>(context).getPlayback();
+        },
+      ),
+    );
     return Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.audiotrack,
-                color: Colors.white,
-                size: 30.0,
-              ),
-              Container(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("MUSIKWÜNSCHE",
-                      style: GoogleFonts.openSansCondensed()))
-            ],
-          ),
-          backgroundColor: Colors.black,
-          elevation: 0.0,
-          centerTitle: true,
-          automaticallyImplyLeading: false,
-          leading: IconButton(
-            icon: Icon(Icons.refresh),
-            onPressed: () {
-              BlocProvider.of<PlaybackCubit>(context).getPlayback();
-            },
-          ),
-        ),
+        primary: true,
+        appBar: appBar,
         body: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
@@ -72,3 +74,38 @@ class MainPage extends StatelessWidget {
         ));
   }
 }
+
+/*
+return Scaffold(
+        primary: true,
+        appBar: appBar,
+        body: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            PlaybackUi(),
+            TutorialUi(),
+            InputUi(),
+          ],
+        ));
+ */
+
+/*return Scaffold(
+        resizeToAvoidBottomInset: true,
+        primary: true,
+        appBar: appBar,
+        body: SingleChildScrollView(
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height -
+                (appBar.preferredSize.height +
+                    MediaQuery.of(context).padding.top +
+                    MediaQuery.of(context).padding.bottom),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                PlaybackUi(),
+                TutorialUi(),
+                InputUi(),
+              ],
+            ),
+          ),
+        ));*/
