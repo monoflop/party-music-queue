@@ -1,5 +1,5 @@
-# PartyMusic
-PartyMusic is a simple WebApp I programmed for a small party. Party guests can use the app to add song requests directly to the queue without having to operate the playback device. The app needs to be connected to a Spotify account and automatically adds songs to the current playback device via the Spotify api.
+# PartyMusicQueue
+PartyMusicQueue is a simple WebApp I programmed for a small party. Party guests can use the app to add song requests directly to the queue without having to operate the playback device. The app needs to be connected to a Spotify account and automatically adds songs to the current playback device via the Spotify api.
 
 ![Screenshots](artwork/screenshots.png)
 
