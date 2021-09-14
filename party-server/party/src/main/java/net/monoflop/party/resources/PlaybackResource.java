@@ -160,7 +160,8 @@ public class PlaybackResource {
         }
     }
 
-    private static Optional<Track> searchTrack(
+    @Nonnull
+    public static Optional<Track> searchTrack(
             @Nonnull SpotifyApi spotifyApi, @Nonnull String trackId)
             throws IOException, SpotifyWebApiException, ParseException {
         //Search track first
@@ -182,7 +183,7 @@ public class PlaybackResource {
     }
 
     @Nonnull
-    private static Track mapSpotifyTrack(@Nonnull com.wrapper.spotify.model_objects.specification.Track spotifyTrack) {
+    public static Track mapSpotifyTrack(@Nonnull com.wrapper.spotify.model_objects.specification.Track spotifyTrack) {
         Track track = new Track();
         track.setId(spotifyTrack.getId());
         track.setTitle(spotifyTrack.getName());

@@ -24,6 +24,9 @@ import net.monoflop.party.utils.StateManager;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.telegram.telegrambots.ApiContextInitializer;
+import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 import java.io.File;
 import java.io.IOException;
@@ -101,6 +104,23 @@ public class PartyServerApplication extends Application<PartyServerConfiguration
                 configuration.getSpotifyClientId(),
                 configuration.getSpotifyClientSecret(),
                 configuration.getServerBaseUrl());
+
+        //Telegram bot
+        //We use the old api, because the new one breaks dropwizard
+        if(configuration.isTelegramBotEnabled()) {
+            try {
+                ApiContextInitializer.init();
+                QueueTelegramBot queueTelegramBot = new QueueTelegramBot(
+                        configuration.getTelegramBotUsername(),
+                        configuration.getTelegramBotToken(),
+                        spotifyWrapper);
+                TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
+                telegramBotsApi.registerBot(queueTelegramBot);
+            }
+            catch (TelegramApiRequestException e) {
+                log.error("Failed to register telegram bot", e);
+            }
+        }
 
         environment.jersey().register(
                 new AuthenticationResource(spotifyWrapper));

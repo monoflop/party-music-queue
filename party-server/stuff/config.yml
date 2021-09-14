@@ -55,6 +55,10 @@ logging:
 #Server config
 spotifyClientId: REPLACE
 spotifyClientSecret: REPLACE
+#Telegram
+telegramBotEnabled: true
+telegramBotUsername: Test
+telegramBotToken: TOKEN
 serverBaseUrl: https://replace.com/party
 #SHA 256 hashed secret
 hashedApiKey: REPLACE

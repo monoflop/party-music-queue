@@ -24,6 +24,15 @@ public class PartyServerConfiguration extends Configuration {
     @NotEmpty
     private String spotifyClientSecret;
 
+    @NotNull
+    private boolean telegramBotEnabled;
+
+    @NotEmpty
+    private String telegramBotUsername;
+
+    @NotEmpty
+    private String telegramBotToken;
+
     @NotEmpty
     private String serverBaseUrl;
 
@@ -50,6 +59,30 @@ public class PartyServerConfiguration extends Configuration {
 
     public void setSpotifyClientSecret(String spotifyClientSecret) {
         this.spotifyClientSecret = spotifyClientSecret;
+    }
+
+    public boolean isTelegramBotEnabled() {
+        return telegramBotEnabled;
+    }
+
+    public void setTelegramBotEnabled(boolean telegramBotEnabled) {
+        this.telegramBotEnabled = telegramBotEnabled;
+    }
+
+    public String getTelegramBotUsername() {
+        return telegramBotUsername;
+    }
+
+    public void setTelegramBotUsername(String telegramBotUsername) {
+        this.telegramBotUsername = telegramBotUsername;
+    }
+
+    public String getTelegramBotToken() {
+        return telegramBotToken;
+    }
+
+    public void setTelegramBotToken(String telegramBotToken) {
+        this.telegramBotToken = telegramBotToken;
     }
 
     public String getServerBaseUrl() {
