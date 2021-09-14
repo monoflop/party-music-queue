@@ -1,5 +1,5 @@
 # PartyMusicQueue
-PartyMusicQueue is a simple WebApp I programmed for a small party. Party guests can use the app to add song requests directly to the queue without having to operate the playback device. The app needs to be connected to a Spotify account and automatically adds songs to the current playback device via the Spotify api.
+PartyMusicQueue is a simple WebApp / ChatBot I programmed for a small party. Party guests can use the app to add song requests directly to the queue without having to operate the playback device. The app needs to be connected to a Spotify account and automatically adds songs to the current playback device via the Spotify api.
 
 ![Screenshots](artwork/screenshots.png)
 
@@ -9,6 +9,9 @@ PartyMusicQueue is a simple WebApp I programmed for a small party. Party guests 
 
 ### Frontend
 WebApp developed in flutter, optimized and build for mobile browsers.
+
+### Telegram Bot
+The bot is an alternative method of adding songs.
 
 ### Backend
 REST-like API developed in java with dropwizard framework. Packed inside a docker image for easy deployment.
@@ -21,6 +24,11 @@ REST-like API developed in java with dropwizard framework. Packed inside a docke
 3. Copy ClientSecret
 4. Edit App-Settings
     - Change Redirect URI to [Backend deploy point]/v1/auth/spotify/callback/
+
+### Telegram Bot (Optional)
+Here is a tutorial how you can create a bot: https://core.telegram.org/bots.
+1. Copy bot username
+2. Copy bot token
 
 ### Backend
 Requirements for building:
@@ -36,11 +44,12 @@ Building:
     1. Create shared secret for example sha1 hash of something
     2. Create sha256 hash of secret
     3. Paste sha256 hash to config
-5. Setup CORS (optional)
-6. Copy config to party-server/build/config.yml
-7. Build server image with ``./make.sh``
-8. Create server directory  ``mkdir /usr/local/partyserver``
-9. Deploy docker image ``partyserver`` to server or run localy ``./run.sh``
+5. (Optional) Setup CORS 
+6. (Optional) Copy telegram bot username and token
+7. Copy config to party-server/build/config.yml
+8. Build server image with ``./make.sh``
+9. Create server directory  ``mkdir /usr/local/partyserver``
+10. Deploy docker image ``partyserver`` to server or run localy ``./run.sh``
 
 Connect playback spotify account:
 1. (Browser) Navigate to [Backend deploy point]/auth/spotify
